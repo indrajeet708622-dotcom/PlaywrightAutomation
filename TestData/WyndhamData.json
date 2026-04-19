@@ -1,0 +1,15 @@
+{
+"EnterPageData": {
+    "Location":["New York","Los Angeles","Chicago","Houston","Phoenix"
+],
+"pincode":[
+    "20000","90001","60601","77001","85001"
+
+]
+},
+"URL":
+{
+    "Wyndham_URL":"https://www.wyndhamhotels.com/"
+}
+
+}
