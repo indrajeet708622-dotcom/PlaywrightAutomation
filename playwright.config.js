@@ -1,5 +1,33 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
+const { defineConfig, devices } =require('@playwright/test');
+const {execSync}=require('child_process');
+const rimraf=require('rimraf');
+
+
+
+//function to delete a directory
+
+/**
+ * @param {String} dir
+ */ 
+
+
+const deleteDir=(dir) =>{
+
+  rimraf.sync(dir);
+  console.log(`Deleted Directory Before Execution: ${dir}`);
+};
+
+
+//Delete the test-results directory before running tests
+const resultDir='./test-results';
+deleteDir(resultDir);
+
+const resultDir1='./Results';
+deleteDir(resultDir1);
+
+const resultDir2='./playwright-report';
+deleteDir(resultDir2);
 
 /**
  * Read environment variables from file.
@@ -14,6 +42,10 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  timeout:100 * 60 * 1000,
+  expect:{
+           timeout:10*1000,
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,9 +53,13 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+
+reporter: [
+  ['html'],
+  ['allure-playwright', { outputFolder: 'allure-results' }]
+],
   // reporter: process.env.RP_SWITCH=="true" ? [
   //  ['html'],
   //  ['list'],
@@ -31,9 +67,13 @@ export default defineConfig({
   //  ['allure-playwright'],
   //  ['@']
   // ],
-  // globalSetup:'./helper/cleanup.js',
-  // globalTeardown:'.helper/report.js'
+  globalSetup: './Helper/cleanup.js',
+  globalTeardown: './Helper/report.js',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
+
+
+
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',

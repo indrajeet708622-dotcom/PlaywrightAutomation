@@ -14,3 +14,5 @@ test("Verify HomePage",async({page})=>{
     await seeMemberDeals.clickOnSeeMemberDeals();
     // await expect(homePage1.signInButton).toBeVisible();
     })
+
+    

@@ -20,5 +20,4 @@ async enterLocation(location){
     await this.searchBox.fill(location);
 }
 
-
 }module.exports=HomePage;

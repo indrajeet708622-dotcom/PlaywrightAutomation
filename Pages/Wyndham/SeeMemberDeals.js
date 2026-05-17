@@ -10,7 +10,7 @@ class SeeMemberDeals{
    
     constructor(page){
         this.page=page;
-        this.dealMemeber=page.locator("(//*[contains(text(),'SEE MEMBER DEALS')])[1]");
+        this.dealMemeber=page.locator("(//*[contains(text(),'PRE-QUALIFY NOW')])[3]");
     }
 
     async clickOnSeeMemberDeals(){
