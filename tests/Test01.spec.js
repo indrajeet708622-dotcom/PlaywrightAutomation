@@ -1,7 +1,7 @@
 const {test, expect, chromium} = require('@playwright/test');
 
 
-test("Verify the title of the page", async ()=> {
+test('Verify the title of the page,@ORRS', async ()=> {
 test.setTimeout(15*6000);
     const browser=await chromium.launch({
         headless: false

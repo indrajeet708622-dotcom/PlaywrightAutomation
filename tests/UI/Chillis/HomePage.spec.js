@@ -3,7 +3,7 @@ const {POManagerChillis}=require("../../../Helper/POManagerChillis");
 const testdata=require('../../../TestData/ChillisData.json');
 
 
-test("Verify Chillis Home Page",async({page,context}, testinfo)=>{
+test("Verify Chillis Home Page,@",async({page,context}, testinfo)=>{
  const pmmm=new POManagerChillis(page);
  const Facebook=pmmm.getFacebook();
 

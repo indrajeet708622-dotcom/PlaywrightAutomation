@@ -21,7 +21,7 @@ headers:
 
     const body=await response.json();
 
-    await expect(response,"should be 202").toBe("200");
+    await expect(response.status(),"should be 202").toBe("200");
     const token=body.acces_tocken;
 
 
